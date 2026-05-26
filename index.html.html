@@ -1,0 +1,2170 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacidade Digital — Seus Dados Valem Dinheiro</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Rajdhani:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;600&display=swap" rel="stylesheet" />
+  <style>
+/* =============================================
+   PRIVACIDADE DIGITAL — STYLESHEET
+   Design: Cyber / Futuristic / Neon Dark
+   ============================================= */
+
+/* ===== CSS VARIABLES ===== */
+:root {
+  --bg-primary:    #050810;
+  --bg-secondary:  #080d1a;
+  --bg-card:       rgba(10, 18, 40, 0.7);
+  --bg-glass:      rgba(14, 24, 55, 0.5);
+
+  --accent-cyan:   #00d4ff;
+  --accent-neon:   #7c3aed;
+  --accent-purple: #a855f7;
+  --accent-blue:   #3b82f6;
+  --accent-green:  #10b981;
+  --accent-red:    #ef4444;
+  --accent-orange: #f59e0b;
+
+  --text-primary:  #e2e8f0;
+  --text-secondary:#94a3b8;
+  --text-muted:    #4a5568;
+
+  --border-glow:   rgba(0, 212, 255, 0.2);
+  --border-subtle: rgba(255,255,255,0.07);
+
+  --glow-cyan:     0 0 20px rgba(0, 212, 255, 0.4);
+  --glow-purple:   0 0 20px rgba(168, 85, 247, 0.4);
+  --glow-blue:     0 0 20px rgba(59, 130, 246, 0.4);
+
+  --font-display: 'Orbitron', monospace;
+  --font-body:    'Rajdhani', sans-serif;
+  --font-mono:    'JetBrains Mono', monospace;
+
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 22px;
+
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ===== RESET & BASE ===== */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 72px;
+  font-size: 16px;
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  line-height: 1.7;
+  overflow-x: hidden;
+  cursor: none;
+}
+
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; }
+ul { list-style: none; }
+
+/* ===== SCROLLBAR ===== */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--bg-primary); }
+::-webkit-scrollbar-thumb { background: var(--accent-cyan); border-radius: 4px; }
+
+/* ===== CUSTOM CURSOR ===== */
+.cursor-dot {
+  width: 6px; height: 6px;
+  background: var(--accent-cyan);
+  border-radius: 50%;
+  position: fixed;
+  top: 0; left: 0;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: none;
+  box-shadow: var(--glow-cyan);
+}
+.cursor-outline {
+  width: 36px; height: 36px;
+  border: 1.5px solid rgba(0,212,255,0.5);
+  border-radius: 50%;
+  position: fixed;
+  top: 0; left: 0;
+  pointer-events: none;
+  z-index: 9998;
+  transform: translate(-50%, -50%);
+  transition: transform 0.1s ease, width 0.3s, height 0.3s, border-color 0.3s;
+}
+
+/* ===== NAVBAR ===== */
+#navbar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1000;
+  padding: 0 2rem;
+  height: 72px;
+  background: rgba(5, 8, 16, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border-subtle);
+  transition: var(--transition);
+}
+#navbar.scrolled {
+  background: rgba(5, 8, 16, 0.97);
+  border-bottom-color: rgba(0,212,255,0.15);
+}
+.nav-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--accent-cyan);
+  text-shadow: var(--glow-cyan);
+  letter-spacing: 2px;
+}
+.nav-logo i { font-size: 1.4rem; }
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
+}
+.nav-links a {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.5rem 0.9rem;
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  color: var(--text-secondary);
+  border-radius: var(--radius-sm);
+  transition: var(--transition);
+  white-space: nowrap;
+}
+.nav-links a i { font-size: 0.75rem; }
+.nav-links a:hover {
+  color: var(--accent-cyan);
+  background: rgba(0,212,255,0.08);
+  text-shadow: var(--glow-cyan);
+}
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+}
+.hamburger span {
+  display: block;
+  width: 24px; height: 2px;
+  background: var(--accent-cyan);
+  border-radius: 2px;
+  transition: var(--transition);
+}
+.hamburger.active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.hamburger.active span:nth-child(2) { opacity: 0; }
+.hamburger.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* ===== HERO SECTION ===== */
+#hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: radial-gradient(ellipse at 20% 50%, rgba(124,58,237,0.15) 0%, transparent 60%),
+              radial-gradient(ellipse at 80% 20%, rgba(0,212,255,0.1) 0%, transparent 50%),
+              var(--bg-primary);
+}
+#particleCanvas {
+  position: absolute;
+  inset: 0;
+  width: 100%; height: 100%;
+  z-index: 0;
+}
+.hero-grid-overlay {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(0,212,255,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,212,255,0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+  z-index: 1;
+  mask-image: radial-gradient(ellipse at center, black 40%, transparent 80%);
+}
+.hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 2rem 1.5rem;
+  max-width: 900px;
+}
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(0,212,255,0.08);
+  border: 1px solid rgba(0,212,255,0.25);
+  border-radius: 50px;
+  padding: 0.4rem 1rem;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 2px;
+  color: var(--accent-cyan);
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 0 20px rgba(0,212,255,0.1);
+}
+.hero-badge i { font-size: 0.8rem; }
+.hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(3.5rem, 10vw, 8rem);
+  font-weight: 900;
+  line-height: 0.95;
+  letter-spacing: -1px;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+}
+.title-line { display: block; color: var(--text-primary); }
+.title-line.neon-text {
+  color: transparent;
+  -webkit-text-stroke: 2px var(--accent-cyan);
+  text-shadow: none;
+  filter: drop-shadow(0 0 30px var(--accent-cyan));
+}
+.hero-subtitle {
+  font-family: var(--font-display);
+  font-size: clamp(1rem, 3vw, 1.6rem);
+  font-weight: 600;
+  color: var(--accent-purple);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  min-height: 2.5rem;
+  margin-bottom: 1.2rem;
+  text-shadow: var(--glow-purple);
+}
+.cursor-blink {
+  animation: blink 1s infinite;
+  color: var(--accent-cyan);
+}
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+
+.hero-desc {
+  font-size: 1.05rem;
+  color: var(--text-secondary);
+  max-width: 600px;
+  margin: 0 auto 2rem;
+  line-height: 1.8;
+}
+.hero-stats {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  margin-bottom: 2.5rem;
+  flex-wrap: wrap;
+}
+.stat-item { text-align: center; }
+.stat-num {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--accent-cyan);
+  text-shadow: var(--glow-cyan);
+}
+.stat-label {
+  display: block;
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-top: 0.2rem;
+}
+.stat-divider {
+  width: 1px; height: 40px;
+  background: linear-gradient(to bottom, transparent, var(--border-glow), transparent);
+}
+.btn-explore {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  background: linear-gradient(135deg, var(--accent-cyan), var(--accent-blue));
+  color: var(--bg-primary);
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 0.9rem 2.2rem;
+  border-radius: 50px;
+  box-shadow: 0 0 30px rgba(0,212,255,0.4), 0 4px 20px rgba(0,0,0,0.4);
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+.btn-explore::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.2), transparent);
+  opacity: 0;
+  transition: var(--transition);
+}
+.btn-explore:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0 50px rgba(0,212,255,0.6), 0 8px 30px rgba(0,0,0,0.5);
+}
+.btn-explore:hover::before { opacity: 1; }
+.btn-explore i { animation: bounce 2s infinite; }
+@keyframes bounce { 0%,100%{transform:translateY(0)} 50%{transform:translateY(4px)} }
+
+/* Hero floating icons */
+.hero-icons-float { position: absolute; inset: 0; z-index: 1; pointer-events: none; }
+.float-icon {
+  position: absolute;
+  left: var(--x); top: var(--y);
+  font-size: 1.3rem;
+  color: rgba(0,212,255,0.12);
+  animation: floatIcon 6s ease-in-out infinite;
+  animation-delay: var(--delay);
+}
+@keyframes floatIcon {
+  0%,100%{transform:translateY(0) rotate(0deg); opacity:0.12}
+  50%{transform:translateY(-20px) rotate(10deg); opacity:0.25}
+}
+
+/* ===== SECTIONS ===== */
+.section {
+  padding: 100px 2rem;
+  position: relative;
+}
+.section-alt {
+  background: linear-gradient(180deg, var(--bg-primary) 0%, rgba(8,13,26,0.98) 50%, var(--bg-primary) 100%);
+}
+.section-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.section-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+.section-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 3px;
+  color: var(--accent-cyan);
+  text-transform: uppercase;
+  margin-bottom: 0.8rem;
+  opacity: 0.8;
+}
+.section-header h2 {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  color: var(--text-primary);
+  margin-bottom: 0.8rem;
+}
+.highlight {
+  color: var(--accent-cyan);
+  text-shadow: var(--glow-cyan);
+}
+.section-desc {
+  color: var(--text-secondary);
+  font-size: 1rem;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+/* ===== IDENTIFICAÇÃO ===== */
+.id-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 2rem;
+  align-items: start;
+}
+.id-main-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 2.5rem;
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(20px);
+}
+.id-main-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--accent-cyan), var(--accent-purple), transparent);
+}
+.id-main-top {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  margin-bottom: 1.5rem;
+}
+.id-shield-icon {
+  width: 70px; height: 70px;
+  background: linear-gradient(135deg, rgba(0,212,255,0.15), rgba(124,58,237,0.15));
+  border: 1px solid rgba(0,212,255,0.3);
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  color: var(--accent-cyan);
+  flex-shrink: 0;
+  box-shadow: var(--glow-cyan);
+}
+.id-main-top h3 {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: 1px;
+}
+.id-subtitle-text {
+  color: var(--accent-purple);
+  font-size: 0.9rem;
+  font-family: var(--font-mono);
+  margin-top: 0.3rem;
+}
+.id-scan-line {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border-glow), transparent);
+  margin-bottom: 1.5rem;
+  position: relative;
+  overflow: hidden;
+}
+.id-scan-line::after {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%;
+  width: 60%; height: 100%;
+  background: linear-gradient(90deg, transparent, var(--accent-cyan), transparent);
+  animation: scanLine 3s linear infinite;
+}
+@keyframes scanLine { to { left: 200%; } }
+.id-desc-text {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.8;
+}
+.id-info-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+.id-info-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 1rem 1.4rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  backdrop-filter: blur(12px);
+  transition: var(--transition);
+}
+.id-info-card:hover {
+  border-color: rgba(0,212,255,0.25);
+  transform: translateX(4px);
+  box-shadow: -4px 0 20px rgba(0,212,255,0.1);
+}
+.id-info-card > i {
+  font-size: 1.1rem;
+  color: var(--accent-cyan);
+  margin-top: 2px;
+  flex-shrink: 0;
+  width: 20px;
+  text-align: center;
+}
+.id-info-card > div { display: flex; flex-direction: column; gap: 0.15rem; }
+.id-label {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 2px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+.id-value {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+.id-value.secondary { color: var(--text-secondary); font-weight: 400; font-size: 0.85rem; }
+
+/* ===== O QUE É ===== */
+.oqe-intro { margin-bottom: 3rem; }
+.oqe-quote {
+  background: linear-gradient(135deg, rgba(0,212,255,0.05), rgba(124,58,237,0.05));
+  border: 1px solid rgba(0,212,255,0.15);
+  border-left: 3px solid var(--accent-cyan);
+  border-radius: var(--radius-md);
+  padding: 2rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  max-width: 700px;
+  margin: 0 auto;
+}
+.oqe-quote i {
+  font-size: 2rem;
+  color: var(--accent-cyan);
+  opacity: 0.6;
+  flex-shrink: 0;
+}
+.oqe-quote p {
+  font-size: 1.15rem;
+  color: var(--text-primary);
+  line-height: 1.8;
+  font-style: italic;
+}
+.oqe-quote strong { color: var(--accent-cyan); }
+
+.oqe-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+.oqe-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 1.8rem;
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(12px);
+}
+.oqe-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: linear-gradient(135deg, rgba(0,212,255,0.04), transparent);
+  opacity: 0;
+  transition: var(--transition);
+}
+.oqe-card:hover {
+  border-color: rgba(0,212,255,0.3);
+  transform: translateY(-6px);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.4), 0 0 30px rgba(0,212,255,0.1);
+}
+.oqe-card:hover::before { opacity: 1; }
+.oqe-card-icon {
+  width: 50px; height: 50px;
+  background: linear-gradient(135deg, rgba(0,212,255,0.15), rgba(124,58,237,0.15));
+  border: 1px solid rgba(0,212,255,0.2);
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  color: var(--accent-cyan);
+  margin-bottom: 1.2rem;
+}
+.oqe-card h4 {
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 0.8rem;
+  letter-spacing: 0.5px;
+}
+.oqe-card p { font-size: 0.9rem; color: var(--text-secondary); line-height: 1.8; }
+
+.oqe-data-types {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 2.5rem;
+  backdrop-filter: blur(12px);
+}
+.oqe-data-types h3 {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 1.8rem;
+  letter-spacing: 0.5px;
+  text-align: center;
+}
+.data-type-list {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1rem;
+}
+.data-type-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 1rem 0.5rem;
+  background: rgba(0,212,255,0.04);
+  border: 1px solid rgba(0,212,255,0.1);
+  border-radius: var(--radius-md);
+  transition: var(--transition);
+  cursor: default;
+}
+.data-type-item:hover {
+  background: rgba(0,212,255,0.1);
+  border-color: rgba(0,212,255,0.3);
+  transform: scale(1.05);
+}
+.data-type-item i {
+  font-size: 1.4rem;
+  color: var(--accent-cyan);
+}
+.data-type-item span {
+  font-size: 0.72rem;
+  color: var(--text-secondary);
+  text-align: center;
+  letter-spacing: 0.3px;
+}
+
+/* ===== COMO FUNCIONA — TIMELINE ===== */
+.timeline-wrapper {
+  position: relative;
+  padding: 0 2rem;
+  max-width: 900px;
+  margin: 0 auto 3rem;
+}
+.timeline-line {
+  position: absolute;
+  left: 50%;
+  top: 0; bottom: 0;
+  width: 2px;
+  background: linear-gradient(to bottom, transparent, var(--accent-cyan), var(--accent-purple), transparent);
+  transform: translateX(-50%);
+}
+.timeline-step {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: start;
+  gap: 2rem;
+  margin-bottom: 3rem;
+  position: relative;
+}
+.timeline-step .timeline-card { grid-column: 1; }
+.timeline-step .timeline-dot { grid-column: 2; }
+.timeline-step.right .timeline-card { grid-column: 3; }
+.timeline-step.right .timeline-dot { grid-column: 2; }
+.timeline-dot {
+  width: 50px; height: 50px;
+  background: linear-gradient(135deg, var(--accent-cyan), var(--accent-neon));
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: white;
+  box-shadow: 0 0 20px rgba(0,212,255,0.5);
+  flex-shrink: 0;
+  z-index: 1;
+  position: relative;
+}
+.timeline-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 1.6rem;
+  transition: var(--transition);
+  backdrop-filter: blur(12px);
+}
+.timeline-card:hover {
+  border-color: rgba(0,212,255,0.25);
+  box-shadow: 0 10px 40px rgba(0,0,0,0.3), 0 0 20px rgba(0,212,255,0.08);
+}
+.tc-icon {
+  width: 42px; height: 42px;
+  background: rgba(0,212,255,0.1);
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  color: var(--accent-cyan);
+  margin-bottom: 1rem;
+}
+.tc-content h4 {
+  font-family: var(--font-display);
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 0.7rem;
+  letter-spacing: 0.5px;
+}
+.tc-content p { font-size: 0.88rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 1rem; }
+.tc-tags { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+.tc-tags span {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 1px;
+  color: var(--accent-cyan);
+  background: rgba(0,212,255,0.08);
+  border: 1px solid rgba(0,212,255,0.2);
+  border-radius: 50px;
+  padding: 0.2rem 0.7rem;
+}
+.cf-highlight-box {
+  background: linear-gradient(135deg, rgba(0,212,255,0.08), rgba(124,58,237,0.08));
+  border: 1px solid rgba(0,212,255,0.2);
+  border-radius: var(--radius-md);
+  padding: 1.5rem 2rem;
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  max-width: 700px;
+  margin: 0 auto;
+}
+.cf-highlight-box i {
+  font-size: 2rem;
+  color: var(--accent-orange);
+  flex-shrink: 0;
+}
+.cf-highlight-box p { font-size: 1rem; color: var(--text-secondary); }
+.cf-highlight-box strong { color: var(--accent-cyan); }
+
+/* ===== CASO REAL ===== */
+.cases-tabs {
+  display: flex;
+  gap: 0.8rem;
+  justify-content: center;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+.case-tab {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 50px;
+  padding: 0.6rem 1.4rem;
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: var(--transition);
+}
+.case-tab.active, .case-tab:hover {
+  background: rgba(0,212,255,0.1);
+  border-color: rgba(0,212,255,0.35);
+  color: var(--accent-cyan);
+}
+.case-content { display: none; }
+.case-content.active { display: block; }
+.case-header-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  margin-bottom: 1.5rem;
+  backdrop-filter: blur(12px);
+  position: relative;
+  overflow: hidden;
+}
+.case-header-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent-cyan), var(--accent-purple));
+}
+.case-year {
+  font-family: var(--font-display);
+  font-size: 2.5rem;
+  font-weight: 900;
+  color: transparent;
+  -webkit-text-stroke: 1.5px rgba(0,212,255,0.4);
+  flex-shrink: 0;
+}
+.case-title-area { flex: 1; }
+.case-title-area h3 {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0.4rem;
+  letter-spacing: 0.5px;
+}
+.case-subtitle { font-size: 0.88rem; color: var(--text-secondary); }
+.case-severity {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  padding: 0.4rem 0.8rem;
+  border-radius: 50px;
+  flex-shrink: 0;
+}
+.case-severity.critical {
+  background: rgba(239,68,68,0.15);
+  border: 1px solid rgba(239,68,68,0.4);
+  color: #ef4444;
+}
+.case-severity.high {
+  background: rgba(245,158,11,0.15);
+  border: 1px solid rgba(245,158,11,0.4);
+  color: #f59e0b;
+}
+.case-body {
+  display: grid;
+  grid-template-columns: 1fr 280px;
+  gap: 1.5rem;
+}
+.case-text { display: flex; flex-direction: column; gap: 1rem; }
+.case-block {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 1.4rem;
+  backdrop-filter: blur(12px);
+}
+.case-block h4 {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: var(--font-display);
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--accent-cyan);
+  margin-bottom: 0.8rem;
+  letter-spacing: 0.5px;
+}
+.case-block h4 i { font-size: 0.85rem; }
+.case-block p { font-size: 0.9rem; color: var(--text-secondary); line-height: 1.8; }
+.case-stats {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.cs-item {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 1.2rem;
+  text-align: center;
+  backdrop-filter: blur(12px);
+  transition: var(--transition);
+}
+.cs-item:hover { border-color: rgba(0,212,255,0.25); }
+.cs-num {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  font-weight: 900;
+  color: var(--accent-cyan);
+  text-shadow: var(--glow-cyan);
+}
+.cs-label {
+  display: block;
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-top: 0.3rem;
+}
+
+/* ===== COMO SE PROTEGER ===== */
+.protection-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.2rem;
+  margin-bottom: 2.5rem;
+}
+.prot-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 1.6rem;
+  position: relative;
+  overflow: hidden;
+  transition: var(--transition);
+  backdrop-filter: blur(12px);
+}
+.prot-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent-cyan), transparent);
+  opacity: 0;
+  transition: var(--transition);
+}
+.prot-card:hover {
+  border-color: rgba(0,212,255,0.3);
+  transform: translateY(-6px);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.5), 0 0 30px rgba(0,212,255,0.1);
+}
+.prot-card:hover::before { opacity: 1; }
+.prot-icon-wrap {
+  width: 56px; height: 56px;
+  background: linear-gradient(135deg, rgba(0,212,255,0.12), rgba(124,58,237,0.12));
+  border: 1px solid rgba(0,212,255,0.2);
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  color: var(--accent-cyan);
+  margin-bottom: 1.2rem;
+  transition: var(--transition);
+}
+.prot-card:hover .prot-icon-wrap {
+  box-shadow: var(--glow-cyan);
+  background: linear-gradient(135deg, rgba(0,212,255,0.2), rgba(124,58,237,0.2));
+}
+.prot-check {
+  position: absolute;
+  top: 1rem; right: 1rem;
+  width: 28px; height: 28px;
+  background: rgba(16,185,129,0.1);
+  border: 1px solid rgba(16,185,129,0.3);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.65rem;
+  color: var(--accent-green);
+}
+.prot-card h4 {
+  font-family: var(--font-display);
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 0.8rem;
+  letter-spacing: 0.5px;
+}
+.prot-card p { font-size: 0.82rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 1.2rem; }
+.prot-level { margin-top: auto; }
+.prot-level > span {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  letter-spacing: 1px;
+  color: var(--text-muted);
+  margin-bottom: 0.4rem;
+  text-transform: uppercase;
+}
+.prot-bar {
+  height: 3px;
+  background: rgba(255,255,255,0.05);
+  border-radius: 3px;
+  overflow: hidden;
+}
+.prot-fill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, var(--accent-cyan), var(--accent-purple));
+  border-radius: 3px;
+  transition: width 1.2s cubic-bezier(0.4,0,0.2,1);
+  box-shadow: 0 0 8px rgba(0,212,255,0.5);
+}
+.lgpd-box {
+  background: linear-gradient(135deg, rgba(16,185,129,0.07), rgba(0,212,255,0.07));
+  border: 1px solid rgba(16,185,129,0.2);
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 1.5rem;
+}
+.lgpd-icon {
+  width: 56px; height: 56px;
+  background: rgba(16,185,129,0.12);
+  border: 1px solid rgba(16,185,129,0.3);
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  color: var(--accent-green);
+  flex-shrink: 0;
+}
+.lgpd-text h4 {
+  font-family: var(--font-display);
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--accent-green);
+  margin-bottom: 0.6rem;
+  letter-spacing: 0.5px;
+}
+.lgpd-text p { font-size: 0.9rem; color: var(--text-secondary); line-height: 1.8; }
+
+/* ===== FONTES ===== */
+.sources-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.2rem;
+}
+.source-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 1.8rem;
+  display: flex;
+  gap: 1.2rem;
+  transition: var(--transition);
+  backdrop-filter: blur(12px);
+  position: relative;
+  overflow: hidden;
+}
+.source-card::before {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--accent-cyan), transparent);
+  transform: scaleX(0);
+  transition: var(--transition);
+}
+.source-card:hover {
+  border-color: rgba(0,212,255,0.3);
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(0,0,0,0.4), 0 0 20px rgba(0,212,255,0.1);
+}
+.source-card:hover::before { transform: scaleX(1); }
+.source-icon {
+  width: 48px; height: 48px;
+  background: rgba(0,212,255,0.1);
+  border: 1px solid rgba(0,212,255,0.2);
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  color: var(--accent-cyan);
+  flex-shrink: 0;
+}
+.source-tag {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  letter-spacing: 2px;
+  color: var(--accent-purple);
+  text-transform: uppercase;
+  margin-bottom: 0.4rem;
+}
+.source-info h4 {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+}
+.source-info p {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin-bottom: 0.8rem;
+}
+.source-url {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--accent-cyan);
+  letter-spacing: 0.5px;
+}
+
+/* ===== FOOTER ===== */
+#footer {
+  background: var(--bg-secondary);
+  border-top: 1px solid var(--border-subtle);
+  padding: 3rem 2rem;
+  text-align: center;
+}
+.footer-inner { max-width: 600px; margin: 0 auto; }
+.footer-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--accent-cyan);
+  letter-spacing: 2px;
+  margin-bottom: 1rem;
+  text-shadow: var(--glow-cyan);
+}
+.footer-logo i { font-size: 1.5rem; }
+.footer-text {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.8;
+  margin-bottom: 0.8rem;
+}
+.footer-text strong { color: var(--text-primary); }
+.footer-copy {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 2px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+
+/* ===== BACK TO TOP ===== */
+#backToTop {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  width: 48px; height: 48px;
+  background: linear-gradient(135deg, var(--accent-cyan), var(--accent-neon));
+  border: none;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  color: white;
+  cursor: pointer;
+  z-index: 500;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: var(--transition);
+  box-shadow: 0 0 20px rgba(0,212,255,0.4);
+}
+#backToTop.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+#backToTop:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 0 40px rgba(0,212,255,0.6);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1100px) {
+  .oqe-cards-grid { grid-template-columns: repeat(2, 1fr); }
+  .protection-grid { grid-template-columns: repeat(2, 1fr); }
+  .data-type-list { grid-template-columns: repeat(4, 1fr); }
+}
+@media (max-width: 900px) {
+  .id-grid { grid-template-columns: 1fr; }
+  .case-body { grid-template-columns: 1fr; }
+  .case-stats { flex-direction: row; flex-wrap: wrap; }
+  .cs-item { flex: 1; min-width: 100px; }
+  .sources-grid { grid-template-columns: repeat(2, 1fr); }
+  .timeline-wrapper { padding: 0; }
+  .timeline-line { display: none; }
+  .timeline-step,
+  .timeline-step.right {
+    grid-template-columns: auto 1fr;
+    grid-template-rows: auto;
+  }
+  .timeline-step .timeline-card,
+  .timeline-step.right .timeline-card { grid-column: 2; grid-row: 1; }
+  .timeline-step .timeline-dot,
+  .timeline-step.right .timeline-dot { grid-column: 1; grid-row: 1; }
+}
+@media (max-width: 768px) {
+  .nav-links {
+    position: fixed;
+    top: 72px; left: 0; right: 0;
+    background: rgba(5,8,16,0.98);
+    backdrop-filter: blur(20px);
+    flex-direction: column;
+    padding: 1.5rem;
+    gap: 0.4rem;
+    transform: translateY(-110%);
+    transition: var(--transition);
+    border-bottom: 1px solid var(--border-subtle);
+  }
+  .nav-links.open { transform: translateY(0); }
+  .nav-links a { width: 100%; justify-content: flex-start; padding: 0.7rem 1rem; }
+  .hamburger { display: flex; }
+  .oqe-cards-grid { grid-template-columns: 1fr; }
+  .protection-grid { grid-template-columns: repeat(2, 1fr); }
+  .data-type-list { grid-template-columns: repeat(3, 1fr); }
+  .sources-grid { grid-template-columns: 1fr; }
+  .case-header-card { flex-direction: column; align-items: flex-start; }
+  .stat-divider { display: none; }
+  .hero-stats { gap: 1.5rem; }
+  cursor: auto !important;
+}
+@media (max-width: 480px) {
+  .protection-grid { grid-template-columns: 1fr; }
+  .data-type-list { grid-template-columns: repeat(2, 1fr); }
+  .oqe-data-types { padding: 1.5rem; }
+  .hero-title { font-size: clamp(3rem, 14vw, 5rem); }
+  .cases-tabs { flex-direction: column; align-items: stretch; }
+}
+  </style>
+</head>
+<body>
+
+  <!-- ===== CURSOR PERSONALIZADO ===== -->
+  <div class="cursor-dot"></div>
+  <div class="cursor-outline"></div>
+
+  <!-- ===== NAVBAR FIXA ===== -->
+  <nav id="navbar">
+    <div class="nav-container">
+      <div class="nav-logo">
+        <i class="fas fa-shield-halved"></i>
+        <span>PrivData</span>
+      </div>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#identificacao"><i class="fas fa-id-card"></i> Identificação</a></li>
+        <li><a href="#o-que-e"><i class="fas fa-circle-info"></i> O que é</a></li>
+        <li><a href="#como-funciona"><i class="fas fa-gears"></i> Como Funciona</a></li>
+        <li><a href="#caso-real"><i class="fas fa-newspaper"></i> Caso Real</a></li>
+        <li><a href="#protecao"><i class="fas fa-lock"></i> Proteção</a></li>
+        <li><a href="#fontes"><i class="fas fa-book-open"></i> Fontes</a></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ===== HERO SECTION ===== -->
+  <section id="hero">
+    <canvas id="particleCanvas"></canvas>
+    <div class="hero-grid-overlay"></div>
+    <div class="hero-content">
+      <div class="hero-badge" data-aos="fade-down" data-aos-delay="200">
+        <i class="fas fa-eye-slash"></i>
+        <span>Alerta de Segurança Digital</span>
+      </div>
+      <h1 class="hero-title" data-aos="fade-up" data-aos-delay="400">
+        <span class="title-line">Privacidade</span>
+        <span class="title-line neon-text">Digital</span>
+      </h1>
+      <p class="hero-subtitle" data-aos="fade-up" data-aos-delay="600">
+        <span id="typingText"></span><span class="cursor-blink">|</span>
+      </p>
+      <p class="hero-desc" data-aos="fade-up" data-aos-delay="800">
+        Você sabia que cada clique, pesquisa e curtida gera dados valiosos? Descubra quem está te monitorando, como seus dados são usados e como recuperar sua privacidade.
+      </p>
+      <div class="hero-stats" data-aos="fade-up" data-aos-delay="900">
+        <div class="stat-item">
+          <span class="stat-num" data-target="2500000000">0</span>
+          <span class="stat-label">Registros vazados/ano</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <span class="stat-num" data-target="79">0</span>
+          <span class="stat-label">% dos usuários rastreados</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <span class="stat-num" data-target="4">0</span>
+          <span class="stat-label">Bilhões em dados vendidos/dia</span>
+        </div>
+      </div>
+      <a href="#identificacao" class="btn-explore" data-aos="fade-up" data-aos-delay="1000">
+        <span>Explorar</span>
+        <i class="fas fa-arrow-down"></i>
+      </a>
+    </div>
+    <div class="hero-icons-float">
+      <div class="float-icon" style="--delay:0s; --x:10%; --y:20%"><i class="fas fa-lock"></i></div>
+      <div class="float-icon" style="--delay:1s; --x:85%; --y:15%"><i class="fas fa-database"></i></div>
+      <div class="float-icon" style="--delay:2s; --x:75%; --y:75%"><i class="fas fa-robot"></i></div>
+      <div class="float-icon" style="--delay:0.5s; --x:5%; --y:70%"><i class="fas fa-cookie-bite"></i></div>
+      <div class="float-icon" style="--delay:1.5s; --x:90%; --y:50%"><i class="fab fa-instagram"></i></div>
+      <div class="float-icon" style="--delay:3s; --x:50%; --y:85%"><i class="fas fa-wifi"></i></div>
+    </div>
+  </section>
+
+  <!-- ===== SEÇÃO 1 — IDENTIFICAÇÃO ===== -->
+  <section id="identificacao" class="section">
+    <div class="section-inner">
+      <div class="section-header" data-aos="fade-up">
+        <div class="section-tag"><i class="fas fa-id-card"></i> Seção 01</div>
+        <h2>Título & <span class="highlight">Identificação</span></h2>
+        <p class="section-desc">Informações sobre o projeto e seus responsáveis</p>
+      </div>
+
+      <div class="id-grid">
+        <div class="id-main-card" data-aos="fade-up" data-aos-delay="100">
+          <div class="id-main-top">
+            <div class="id-shield-icon">
+              <i class="fas fa-shield-halved"></i>
+            </div>
+            <div>
+              <h3>Privacidade Digital</h3>
+              <p class="id-subtitle-text">Seus Dados Valem Dinheiro</p>
+            </div>
+          </div>
+          <div class="id-scan-line"></div>
+          <p class="id-desc-text">Este projeto explora como seus dados pessoais são coletados, analisados e monetizados na internet — e como você pode se defender.</p>
+        </div>
+
+        <div class="id-info-cards">
+          <div class="id-info-card" data-aos="fade-left" data-aos-delay="100">
+            <i class="fas fa-users"></i>
+            <div>
+              <span class="id-label">Integrantes</span>
+              <span class="id-value">João Melquisedeque</span>
+              <span class="id-value">Augusto Cesar</span>
+            </div>
+          </div>
+          <div class="id-info-card" data-aos="fade-left" data-aos-delay="150">
+            <i class="fas fa-chalkboard-teacher"></i>
+            <div>
+              <span class="id-label">Professora</span>
+              <span class="id-value">Ana Paula</span>
+            </div>
+          </div>
+          <div class="id-info-card" data-aos="fade-left" data-aos-delay="200">
+            <i class="fas fa-book"></i>
+            <div>
+              <span class="id-label">Disciplina</span>
+              <span class="id-value">Tecnologia & Sociedade</span>
+            </div>
+          </div>
+          <div class="id-info-card" data-aos="fade-left" data-aos-delay="250">
+            <i class="fas fa-layer-group"></i>
+            <div>
+              <span class="id-label">Tema / Subtema</span>
+              <span class="id-value">Privacidade Digital</span>
+              <span class="id-value secondary">Seus Dados Valem Dinheiro</span>
+            </div>
+          </div>
+          <div class="id-info-card" data-aos="fade-left" data-aos-delay="300">
+            <i class="fas fa-calendar-days"></i>
+            <div>
+              <span class="id-label">Data</span>
+              <span class="id-value">2025</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SEÇÃO 2 — O QUE É ===== -->
+  <section id="o-que-e" class="section section-alt">
+    <div class="section-inner">
+      <div class="section-header" data-aos="fade-up">
+        <div class="section-tag"><i class="fas fa-circle-info"></i> Seção 02</div>
+        <h2>O que <span class="highlight">é</span></h2>
+        <p class="section-desc">Entenda o que está em jogo toda vez que você acessa a internet</p>
+      </div>
+
+      <div class="oqe-intro" data-aos="fade-up" data-aos-delay="100">
+        <div class="oqe-quote">
+          <i class="fas fa-quote-left"></i>
+          <p>Se o produto é gratuito, então <strong>você é o produto</strong>. Seus dados pessoais são a moeda mais valiosa da era digital.</p>
+        </div>
+      </div>
+
+      <div class="oqe-cards-grid">
+        <div class="oqe-card" data-aos="fade-up" data-aos-delay="100">
+          <div class="oqe-card-icon"><i class="fas fa-fingerprint"></i></div>
+          <h4>O que é Privacidade Digital?</h4>
+          <p>É o direito de controlar quais informações sobre você são coletadas, armazenadas e compartilhadas quando você navega na internet. Cada mensagem enviada, vídeo assistido e produto pesquisado deixa rastros digitais que contam muito sobre quem você é.</p>
+        </div>
+
+        <div class="oqe-card" data-aos="fade-up" data-aos-delay="200">
+          <div class="oqe-card-icon"><i class="fas fa-cookie-bite"></i></div>
+          <h4>O que são Cookies?</h4>
+          <p>Cookies são pequenos arquivos salvos no seu navegador. Eles registram seus hábitos de navegação, preferências e histórico. Alguns são inofensivos (como lembrar seu login), mas outros são usados para rastrear seu comportamento em dezenas de sites diferentes.</p>
+        </div>
+
+        <div class="oqe-card" data-aos="fade-up" data-aos-delay="300">
+          <div class="oqe-card-icon"><i class="fas fa-eye"></i></div>
+          <h4>Rastreamento Online</h4>
+          <p>Empresas como Google, Meta e Amazon possuem ferramentas instaladas em milhares de sites — pixels de rastreamento, scripts invisíveis e beacons. Eles monitoram cada página que você visita, mesmo fora das plataformas delas.</p>
+        </div>
+
+        <div class="oqe-card" data-aos="fade-up" data-aos-delay="400">
+          <div class="oqe-card-icon"><i class="fas fa-robot"></i></div>
+          <h4>Algoritmos & IA</h4>
+          <p>Com os dados coletados, algoritmos criam um perfil detalhado de você: sua faixa etária, renda estimada, estado emocional, intenções de compra e opiniões políticas. Esse perfil vale muito para quem deseja influenciar suas decisões.</p>
+        </div>
+
+        <div class="oqe-card" data-aos="fade-up" data-aos-delay="500">
+          <div class="oqe-card-icon"><i class="fas fa-bullseye"></i></div>
+          <h4>Anúncios Personalizados</h4>
+          <p>Já falou sobre um produto no celular e viu um anúncio sobre ele em seguida? Não é coincidência — é resultado de algoritmos que analisam seus dados em tempo real para mostrar exatamente o que tem mais chance de fazer você comprar.</p>
+        </div>
+
+        <div class="oqe-card" data-aos="fade-up" data-aos-delay="600">
+          <div class="oqe-card-icon"><i class="fas fa-dollar-sign"></i></div>
+          <h4>Seus Dados Valem Dinheiro</h4>
+          <p>O mercado global de dados pessoais movimenta trilhões de dólares por ano. Empresas compram e vendem perfis de usuários para plataformas de publicidade, seguradoras, governos e até agências políticas. Você é, literalmente, um produto sendo comercializado.</p>
+        </div>
+      </div>
+
+      <div class="oqe-data-types" data-aos="fade-up" data-aos-delay="100">
+        <h3>Quais dados são coletados sobre você?</h3>
+        <div class="data-type-list">
+          <div class="data-type-item"><i class="fas fa-map-marker-alt"></i><span>Localização GPS</span></div>
+          <div class="data-type-item"><i class="fas fa-search"></i><span>Histórico de Pesquisa</span></div>
+          <div class="data-type-item"><i class="fas fa-heart"></i><span>Curtidas e Reações</span></div>
+          <div class="data-type-item"><i class="fas fa-mobile-alt"></i><span>Modelo do Dispositivo</span></div>
+          <div class="data-type-item"><i class="fas fa-clock"></i><span>Tempo de Tela</span></div>
+          <div class="data-type-item"><i class="fas fa-microphone"></i><span>Comandos de Voz</span></div>
+          <div class="data-type-item"><i class="fas fa-camera"></i><span>Reconhecimento Facial</span></div>
+          <div class="data-type-item"><i class="fas fa-shopping-cart"></i><span>Hábitos de Compra</span></div>
+          <div class="data-type-item"><i class="fas fa-network-wired"></i><span>Endereço IP</span></div>
+          <div class="data-type-item"><i class="fas fa-envelope"></i><span>Contatos e E-mails</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SEÇÃO 3 — COMO FUNCIONA ===== -->
+  <section id="como-funciona" class="section">
+    <div class="section-inner">
+      <div class="section-header" data-aos="fade-up">
+        <div class="section-tag"><i class="fas fa-gears"></i> Seção 03</div>
+        <h2>Como <span class="highlight">Funciona</span></h2>
+        <p class="section-desc">O ciclo invisível da coleta e monetização dos seus dados</p>
+      </div>
+
+      <div class="timeline-wrapper">
+        <div class="timeline-line"></div>
+
+        <div class="timeline-step" data-aos="fade-right" data-aos-delay="100">
+          <div class="timeline-dot"><span>01</span></div>
+          <div class="timeline-card">
+            <div class="tc-icon"><i class="fas fa-mobile-screen-button"></i></div>
+            <div class="tc-content">
+              <h4>Usuário Acessa o App/Site</h4>
+              <p>Ao abrir um aplicativo ou acessar um site, o processo começa imediatamente. Antes mesmo de você interagir, scripts já estão mapeando seu dispositivo, conexão de rede, fuso horário, idioma e muito mais.</p>
+              <div class="tc-tags">
+                <span>Fingerprinting</span><span>Device ID</span><span>Cookies</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-step right" data-aos="fade-left" data-aos-delay="200">
+          <div class="timeline-dot"><span>02</span></div>
+          <div class="timeline-card">
+            <div class="tc-icon"><i class="fas fa-database"></i></div>
+            <div class="tc-content">
+              <h4>Dados São Coletados em Tempo Real</h4>
+              <p>Cada clique, scroll, tempo de leitura, pausas em vídeo e até o movimento do mouse são registrados. Sensores do smartphone capturam localização, acelerômetro e luz ambiente. Tudo vai para servidores remotos.</p>
+              <div class="tc-tags">
+                <span>Telemetria</span><span>Geolocalização</span><span>Sensores</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-step" data-aos="fade-right" data-aos-delay="300">
+          <div class="timeline-dot"><span>03</span></div>
+          <div class="timeline-card">
+            <div class="tc-icon"><i class="fas fa-brain"></i></div>
+            <div class="tc-content">
+              <h4>IA Analisa o Comportamento</h4>
+              <p>Algoritmos de machine learning processam os dados e constroem seu perfil psicográfico: interesses, nível de renda, estado emocional, propensão a compras, orientação política e religiosa — tudo isso sem você saber.</p>
+              <div class="tc-tags">
+                <span>Machine Learning</span><span>Perfil Psicográfico</span><span>Big Data</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-step right" data-aos="fade-left" data-aos-delay="400">
+          <div class="timeline-dot"><span>04</span></div>
+          <div class="timeline-card">
+            <div class="tc-icon"><i class="fas fa-handshake"></i></div>
+            <div class="tc-content">
+              <h4>Dados São Compartilhados e Vendidos</h4>
+              <p>Seu perfil é leiloado em tempo real em plataformas de publicidade programática (RTB - Real Time Bidding). Em milissegundos, dezenas de empresas fazem lances pelo direito de te mostrar um anúncio específico.</p>
+              <div class="tc-tags">
+                <span>Data Brokers</span><span>RTB</span><span>AdTech</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-step" data-aos="fade-right" data-aos-delay="500">
+          <div class="timeline-dot"><span>05</span></div>
+          <div class="timeline-card">
+            <div class="tc-icon"><i class="fas fa-bullhorn"></i></div>
+            <div class="tc-content">
+              <h4>Anúncios Hiper-Personalizados Aparecem</h4>
+              <p>O vencedor do leilão exibe o anúncio mais provável de te fazer agir — comprar, clicar, votar ou mudar de opinião. O ciclo recomeça com os novos dados gerados pela sua interação com esse anúncio.</p>
+              <div class="tc-tags">
+                <span>Microtargeting</span><span>Retargeting</span><span>Persuasão</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="cf-highlight-box" data-aos="fade-up" data-aos-delay="200">
+        <i class="fas fa-bolt"></i>
+        <p>Todo esse processo acontece em <strong>menos de 100 milissegundos</strong> — antes mesmo da página terminar de carregar.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SEÇÃO 4 — CASO REAL ===== -->
+  <section id="caso-real" class="section section-alt">
+    <div class="section-inner">
+      <div class="section-header" data-aos="fade-up">
+        <div class="section-tag"><i class="fas fa-newspaper"></i> Seção 04</div>
+        <h2>Caso <span class="highlight">Real</span></h2>
+        <p class="section-desc">Vazamentos e escândalos que mudaram o debate sobre privacidade</p>
+      </div>
+
+      <div class="cases-tabs" data-aos="fade-up" data-aos-delay="100">
+        <button class="case-tab active" data-case="serasa">🇧🇷 Vazamento Serasa</button>
+        <button class="case-tab" data-case="cambridge">🌎 Cambridge Analytica</button>
+        <button class="case-tab" data-case="tiktok">📱 TikTok & Privacidade</button>
+      </div>
+
+      <!-- CASO SERASA -->
+      <div class="case-content active" id="case-serasa" data-aos="fade-up" data-aos-delay="200">
+        <div class="case-header-card">
+          <div class="case-year">2021</div>
+          <div class="case-title-area">
+            <h3>Maior Vazamento de Dados do Brasil</h3>
+            <p class="case-subtitle">223 milhões de CPFs expostos — mais do que a população brasileira</p>
+          </div>
+          <div class="case-severity critical">CRÍTICO</div>
+        </div>
+        <div class="case-body">
+          <div class="case-text">
+            <div class="case-block">
+              <h4><i class="fas fa-magnifying-glass"></i> O que aconteceu?</h4>
+              <p>Em janeiro de 2021, pesquisadores de segurança descobriram um banco de dados com informações pessoais de 223 milhões de brasileiros sendo vendido em fóruns clandestinos da internet. Os dados incluíam nome completo, CPF, data de nascimento, endereço, foto do rosto, score de crédito, renda e vínculos empregatícios.</p>
+            </div>
+            <div class="case-block">
+              <h4><i class="fas fa-building-columns"></i> Quem estava envolvido?</h4>
+              <p>As investigações apontaram para o Serasa Experian como possível origem do vazamento — empresa que detém um dos maiores bancos de dados financeiros do Brasil. A empresa negou ser a fonte, mas o volume e a qualidade dos dados indicavam uma origem corporativa sofisticada.</p>
+            </div>
+            <div class="case-block">
+              <h4><i class="fas fa-triangle-exclamation"></i> Consequências</h4>
+              <p>O vazamento gerou um aumento expressivo em golpes de phishing, fraudes bancárias e clonagem de identidade. A ANPD (Autoridade Nacional de Proteção de Dados) abriu investigação, e o caso acelerou a implementação efetiva da LGPD no Brasil.</p>
+            </div>
+          </div>
+          <div class="case-stats">
+            <div class="cs-item"><span class="cs-num">223M</span><span class="cs-label">CPFs expostos</span></div>
+            <div class="cs-item"><span class="cs-num">40+</span><span class="cs-label">Tipos de dados</span></div>
+            <div class="cs-item"><span class="cs-num">2021</span><span class="cs-label">Ano do vazamento</span></div>
+            <div class="cs-item"><span class="cs-num">LGPD</span><span class="cs-label">Lei afetada</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CASO CAMBRIDGE ANALYTICA -->
+      <div class="case-content" id="case-cambridge">
+        <div class="case-header-card">
+          <div class="case-year">2018</div>
+          <div class="case-title-area">
+            <h3>Facebook & Cambridge Analytica</h3>
+            <p class="case-subtitle">87 milhões de perfis usados para manipulação política</p>
+          </div>
+          <div class="case-severity high">ALTO IMPACTO</div>
+        </div>
+        <div class="case-body">
+          <div class="case-text">
+            <div class="case-block">
+              <h4><i class="fas fa-magnifying-glass"></i> O que aconteceu?</h4>
+              <p>A empresa Cambridge Analytica coletou dados de 87 milhões de usuários do Facebook através de um aplicativo de quiz. Esses dados foram usados para criar perfis psicológicos detalhados e direcionar conteúdo político personalizado durante as eleições americanas de 2016 e o Brexit.</p>
+            </div>
+            <div class="case-block">
+              <h4><i class="fas fa-gavel"></i> Consequências</h4>
+              <p>O Facebook pagou multa de US$ 5 bilhões ao governo americano. Mark Zuckerberg foi convocado ao Congresso. A Cambridge Analytica fechou suas portas. O escândalo inspirou regulamentações de privacidade em todo o mundo e mudou para sempre a percepção pública sobre o uso de dados em redes sociais.</p>
+            </div>
+          </div>
+          <div class="case-stats">
+            <div class="cs-item"><span class="cs-num">87M</span><span class="cs-label">Usuários afetados</span></div>
+            <div class="cs-item"><span class="cs-num">US$5B</span><span class="cs-label">Multa aplicada</span></div>
+            <div class="cs-item"><span class="cs-num">2016</span><span class="cs-label">Eleições EUA</span></div>
+            <div class="cs-item"><span class="cs-num">Brexit</span><span class="cs-label">Referendo UK</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CASO TIKTOK -->
+      <div class="case-content" id="case-tiktok">
+        <div class="case-header-card">
+          <div class="case-year">2023</div>
+          <div class="case-title-area">
+            <h3>TikTok: Espionagem ou Entretenimento?</h3>
+            <p class="case-subtitle">O app mais baixado do mundo sob suspeita de espionagem governamental</p>
+          </div>
+          <div class="case-severity high">POLÊMICO</div>
+        </div>
+        <div class="case-body">
+          <div class="case-text">
+            <div class="case-block">
+              <h4><i class="fas fa-magnifying-glass"></i> O que aconteceu?</h4>
+              <p>O TikTok, pertencente à empresa chinesa ByteDance, foi acusado pelos governos dos EUA, União Europeia e vários outros países de coletar dados excessivos dos usuários e potencialmente compartilhá-los com o governo chinês. O app coleta localização, histórico de navegação, biometria facial e até conteúdo da área de transferência.</p>
+            </div>
+            <div class="case-block">
+              <h4><i class="fas fa-gavel"></i> Consequências</h4>
+              <p>O TikTok foi banido de dispositivos governamentais em mais de 30 países. O CEO foi convocado ao Congresso americano. Em 2024, os EUA aprovaram uma lei exigindo que a ByteDance venda o TikTok ou ele seja banido no país. A empresa pagou multa milionária à UE por violações de privacidade de menores.</p>
+            </div>
+          </div>
+          <div class="case-stats">
+            <div class="cs-item"><span class="cs-num">1B+</span><span class="cs-label">Usuários ativos</span></div>
+            <div class="cs-item"><span class="cs-num">30+</span><span class="cs-label">Países com restrições</span></div>
+            <div class="cs-item"><span class="cs-num">€345M</span><span class="cs-label">Multa na UE</span></div>
+            <div class="cs-item"><span class="cs-num">2024</span><span class="cs-label">Lei de venda nos EUA</span></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===== SEÇÃO 5 — COMO SE PROTEGER ===== -->
+  <section id="protecao" class="section">
+    <div class="section-inner">
+      <div class="section-header" data-aos="fade-up">
+        <div class="section-tag"><i class="fas fa-shield-halved"></i> Seção 05</div>
+        <h2>Como se <span class="highlight">Proteger</span></h2>
+        <p class="section-desc">Ações práticas para blindar sua privacidade digital agora mesmo</p>
+      </div>
+
+      <div class="protection-grid">
+
+        <div class="prot-card" data-aos="zoom-in" data-aos-delay="100">
+          <div class="prot-icon-wrap">
+            <i class="fas fa-key"></i>
+          </div>
+          <div class="prot-check"><i class="fas fa-check"></i></div>
+          <h4>Senhas Fortes & Únicas</h4>
+          <p>Use senhas com mais de 12 caracteres, combinando letras maiúsculas, minúsculas, números e símbolos. Nunca reutilize a mesma senha em sites diferentes. Use um gerenciador como Bitwarden ou 1Password.</p>
+          <div class="prot-level">
+            <span>Nível de Proteção:</span>
+            <div class="prot-bar"><div class="prot-fill" style="--fill: 85%"></div></div>
+          </div>
+        </div>
+
+        <div class="prot-card" data-aos="zoom-in" data-aos-delay="150">
+          <div class="prot-icon-wrap">
+            <i class="fas fa-mobile-screen-button"></i>
+          </div>
+          <div class="prot-check"><i class="fas fa-check"></i></div>
+          <h4>Autenticação em 2 Fatores</h4>
+          <p>Ative o 2FA em todas as suas contas. Mesmo que alguém descubra sua senha, precisará de um segundo código (gerado no seu celular) para acessar sua conta. Use apps como Google Authenticator ou Authy.</p>
+          <div class="prot-level">
+            <span>Nível de Proteção:</span>
+            <div class="prot-bar"><div class="prot-fill" style="--fill: 95%"></div></div>
+          </div>
+        </div>
+
+        <div class="prot-card" data-aos="zoom-in" data-aos-delay="200">
+          <div class="prot-icon-wrap">
+            <i class="fas fa-vpn"></i>
+          </div>
+          <div class="prot-check"><i class="fas fa-check"></i></div>
+          <h4>Use uma VPN</h4>
+          <p>Uma VPN (Rede Virtual Privada) criptografa sua conexão e mascara seu endereço IP, dificultando que empresas e hackers rastreiem sua navegação, especialmente em redes Wi-Fi públicas.</p>
+          <div class="prot-level">
+            <span>Nível de Proteção:</span>
+            <div class="prot-bar"><div class="prot-fill" style="--fill: 75%"></div></div>
+          </div>
+        </div>
+
+        <div class="prot-card" data-aos="zoom-in" data-aos-delay="250">
+          <div class="prot-icon-wrap">
+            <i class="fas fa-trash-can"></i>
+          </div>
+          <div class="prot-check"><i class="fas fa-check"></i></div>
+          <h4>Limpe Cookies Regularmente</h4>
+          <p>Delete cookies e histórico do navegador periodicamente. Use extensões como uBlock Origin ou Privacy Badger para bloquear rastreadores. Considere usar o Firefox com modo de privacidade aprimorado.</p>
+          <div class="prot-level">
+            <span>Nível de Proteção:</span>
+            <div class="prot-bar"><div class="prot-fill" style="--fill: 60%"></div></div>
+          </div>
+        </div>
+
+        <div class="prot-card" data-aos="zoom-in" data-aos-delay="300">
+          <div class="prot-icon-wrap">
+            <i class="fas fa-toggle-off"></i>
+          </div>
+          <div class="prot-check"><i class="fas fa-check"></i></div>
+          <h4>Revise Permissões de Apps</h4>
+          <p>Verifique quais permissões cada aplicativo tem no seu celular. Um app de lanterna não precisa de acesso à sua câmera ou contatos. Revogue permissões desnecessárias nas configurações do seu smartphone.</p>
+          <div class="prot-level">
+            <span>Nível de Proteção:</span>
+            <div class="prot-bar"><div class="prot-fill" style="--fill: 70%"></div></div>
+          </div>
+        </div>
+
+        <div class="prot-card" data-aos="zoom-in" data-aos-delay="350">
+          <div class="prot-icon-wrap">
+            <i class="fas fa-fish-fins"></i>
+          </div>
+          <div class="prot-check"><i class="fas fa-check"></i></div>
+          <h4>Evite Links Suspeitos</h4>
+          <p>Desconfie de e-mails, SMS e mensagens com links urgentes ou ofertas muito boas. Verifique sempre o remetente e o endereço completo do link antes de clicar. Golpes de phishing imitam bancos, Correios e governo.</p>
+          <div class="prot-level">
+            <span>Nível de Proteção:</span>
+            <div class="prot-bar"><div class="prot-fill" style="--fill: 90%"></div></div>
+          </div>
+        </div>
+
+        <div class="prot-card" data-aos="zoom-in" data-aos-delay="400">
+          <div class="prot-icon-wrap">
+            <i class="fas fa-user-shield"></i>
+          </div>
+          <div class="prot-check"><i class="fas fa-check"></i></div>
+          <h4>Limite o Compartilhamento de Dados</h4>
+          <p>Nas configurações de privacidade das redes sociais, restrinja quem pode ver seu perfil, localização e dados pessoais. Desative o rastreamento de anúncios nas configurações do seu Android ou iPhone.</p>
+          <div class="prot-level">
+            <span>Nível de Proteção:</span>
+            <div class="prot-bar"><div class="prot-fill" style="--fill: 65%"></div></div>
+          </div>
+        </div>
+
+        <div class="prot-card" data-aos="zoom-in" data-aos-delay="450">
+          <div class="prot-icon-wrap">
+            <i class="fas fa-arrows-rotate"></i>
+          </div>
+          <div class="prot-check"><i class="fas fa-check"></i></div>
+          <h4>Mantenha Tudo Atualizado</h4>
+          <p>Atualize sempre seus aplicativos, sistema operacional e antivírus. A maioria dos ataques explora vulnerabilidades já conhecidas em versões antigas de software. Atualizações corrigem essas brechas de segurança.</p>
+          <div class="prot-level">
+            <span>Nível de Proteção:</span>
+            <div class="prot-bar"><div class="prot-fill" style="--fill: 80%"></div></div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="lgpd-box" data-aos="fade-up" data-aos-delay="200">
+        <div class="lgpd-icon"><i class="fas fa-scale-balanced"></i></div>
+        <div class="lgpd-text">
+          <h4>Seus Direitos pela LGPD</h4>
+          <p>A Lei Geral de Proteção de Dados (Lei nº 13.709/2018) garante a todo cidadão brasileiro o direito de saber quais dados foram coletados, solicitar correção ou exclusão, revogar consentimento e ser informado sobre vazamentos. Empresas que descumprem podem ser multadas em até R$ 50 milhões.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SEÇÃO 6 — FONTES ===== -->
+  <section id="fontes" class="section section-alt">
+    <div class="section-inner">
+      <div class="section-header" data-aos="fade-up">
+        <div class="section-tag"><i class="fas fa-book-open"></i> Seção 06</div>
+        <h2>Fontes <span class="highlight">Consultadas</span></h2>
+        <p class="section-desc">Referências utilizadas na produção deste material</p>
+      </div>
+
+      <div class="sources-grid">
+
+        <a href="https://cartilha.cert.br" target="_blank" class="source-card" data-aos="fade-up" data-aos-delay="100">
+          <div class="source-icon"><i class="fas fa-shield-halved"></i></div>
+          <div class="source-info">
+            <span class="source-tag">Segurança Digital</span>
+            <h4>CERT.br — Cartilha de Segurança</h4>
+            <p>Guia oficial do Centro de Estudos, Resposta e Tratamento de Incidentes de Segurança no Brasil sobre privacidade, senhas, phishing e proteção de dados.</p>
+            <span class="source-url">cartilha.cert.br <i class="fas fa-arrow-up-right-from-square"></i></span>
+          </div>
+        </a>
+
+        <a href="https://www.tecmundo.com.br/seguranca" target="_blank" class="source-card" data-aos="fade-up" data-aos-delay="150">
+          <div class="source-icon"><i class="fas fa-newspaper"></i></div>
+          <div class="source-info">
+            <span class="source-tag">Tecnologia</span>
+            <h4>TecMundo — Segurança Digital</h4>
+            <p>Portal de tecnologia com cobertura detalhada sobre vazamentos de dados, privacidade online e dicas de segurança para o usuário brasileiro.</p>
+            <span class="source-url">tecmundo.com.br <i class="fas fa-arrow-up-right-from-square"></i></span>
+          </div>
+        </a>
+
+        <a href="https://canaltech.com.br/seguranca" target="_blank" class="source-card" data-aos="fade-up" data-aos-delay="200">
+          <div class="source-icon"><i class="fas fa-satellite-dish"></i></div>
+          <div class="source-info">
+            <span class="source-tag">Tecnologia</span>
+            <h4>Canaltech — Privacidade e Segurança</h4>
+            <p>Cobertura jornalística especializada em tecnologia, cibersegurança, proteção de dados e análises sobre o comportamento das big techs.</p>
+            <span class="source-url">canaltech.com.br <i class="fas fa-arrow-up-right-from-square"></i></span>
+          </div>
+        </a>
+
+        <a href="https://g1.globo.com/tecnologia" target="_blank" class="source-card" data-aos="fade-up" data-aos-delay="250">
+          <div class="source-icon"><i class="fas fa-globe"></i></div>
+          <div class="source-info">
+            <span class="source-tag">Notícias</span>
+            <h4>G1 — Tecnologia</h4>
+            <p>Maior portal de notícias do Brasil com ampla cobertura sobre casos de vazamento de dados, LGPD e direitos digitais dos cidadãos brasileiros.</p>
+            <span class="source-url">g1.globo.com <i class="fas fa-arrow-up-right-from-square"></i></span>
+          </div>
+        </a>
+
+        <a href="https://www.olhardigital.com.br/temas/seguranca" target="_blank" class="source-card" data-aos="fade-up" data-aos-delay="300">
+          <div class="source-icon"><i class="fas fa-eye"></i></div>
+          <div class="source-info">
+            <span class="source-tag">Tecnologia</span>
+            <h4>Olhar Digital — Segurança</h4>
+            <p>Portal especializado em conteúdo digital com foco em educação tecnológica, análises de aplicativos e guias de proteção à privacidade.</p>
+            <span class="source-url">olhardigital.com.br <i class="fas fa-arrow-up-right-from-square"></i></span>
+          </div>
+        </a>
+
+        <a href="https://www.welivesecurity.com/br" target="_blank" class="source-card" data-aos="fade-up" data-aos-delay="350">
+          <div class="source-icon"><i class="fas fa-bug-slash"></i></div>
+          <div class="source-info">
+            <span class="source-tag">Cibersegurança</span>
+            <h4>WeLiveSecurity — ESET Brasil</h4>
+            <p>Blog de segurança da ESET com pesquisas técnicas, análises de malware, tendências em cibersegurança e alertas sobre ameaças digitais globais.</p>
+            <span class="source-url">welivesecurity.com/br <i class="fas fa-arrow-up-right-from-square"></i></span>
+          </div>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer id="footer">
+    <div class="footer-inner">
+      <div class="footer-logo">
+        <i class="fas fa-shield-halved"></i>
+        <span>Privacidade Digital</span>
+      </div>
+      <p class="footer-text">Projeto acadêmico desenvolvido por <strong>João Melquisedeque</strong> e <strong>Augusto Cesar</strong>.<br/>Orientação: Prof.ª <strong>Ana Paula</strong> · 2025</p>
+      <p class="footer-copy">Proteja seus dados. Proteja sua liberdade.</p>
+    </div>
+  </footer>
+
+  <!-- ===== BOTÃO VOLTAR AO TOPO ===== -->
+  <button id="backToTop" aria-label="Voltar ao topo">
+    <i class="fas fa-chevron-up"></i>
+  </button>
+
+  <!-- SCRIPTS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  <script src="script.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  <script>
+/* =============================================
+   PRIVACIDADE DIGITAL — JAVASCRIPT
+   Animations, Particles, Interactions
+   ============================================= */
+
+document.addEventListener('DOMContentLoaded', () => {
+
+  /* ===== AOS INIT ===== */
+  AOS.init({
+    duration: 800,
+    easing: 'ease-out-cubic',
+    once: true,
+    offset: 80
+  });
+
+  /* ===== CUSTOM CURSOR ===== */
+  const dot = document.querySelector('.cursor-dot');
+  const outline = document.querySelector('.cursor-outline');
+  let mouseX = 0, mouseY = 0, outX = 0, outY = 0;
+
+  document.addEventListener('mousemove', e => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+    dot.style.left = mouseX + 'px';
+    dot.style.top  = mouseY + 'px';
+  });
+
+  function animateCursor() {
+    outX += (mouseX - outX) * 0.12;
+    outY += (mouseY - outY) * 0.12;
+    outline.style.left = outX + 'px';
+    outline.style.top  = outY + 'px';
+    requestAnimationFrame(animateCursor);
+  }
+  animateCursor();
+
+  document.querySelectorAll('a, button, .prot-card, .oqe-card, .source-card').forEach(el => {
+    el.addEventListener('mouseenter', () => {
+      outline.style.width  = '56px';
+      outline.style.height = '56px';
+      outline.style.borderColor = 'rgba(0,212,255,0.8)';
+    });
+    el.addEventListener('mouseleave', () => {
+      outline.style.width  = '36px';
+      outline.style.height = '36px';
+      outline.style.borderColor = 'rgba(0,212,255,0.5)';
+    });
+  });
+
+  /* ===== PARTICLE CANVAS ===== */
+  const canvas = document.getElementById('particleCanvas');
+  const ctx    = canvas.getContext('2d');
+  let particles = [];
+
+  function resize() {
+    canvas.width  = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+  resize();
+  window.addEventListener('resize', () => { resize(); initParticles(); });
+
+  class Particle {
+    constructor() { this.reset(); }
+    reset() {
+      this.x     = Math.random() * canvas.width;
+      this.y     = Math.random() * canvas.height;
+      this.vx    = (Math.random() - 0.5) * 0.4;
+      this.vy    = (Math.random() - 0.5) * 0.4;
+      this.size  = Math.random() * 2 + 0.5;
+      this.alpha = Math.random() * 0.5 + 0.1;
+      this.color = Math.random() > 0.6
+        ? `rgba(0,212,255,${this.alpha})`
+        : Math.random() > 0.5
+          ? `rgba(124,58,237,${this.alpha})`
+          : `rgba(168,85,247,${this.alpha})`;
+    }
+    update() {
+      this.x += this.vx;
+      this.y += this.vy;
+      if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
+      if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
+    }
+    draw() {
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+      ctx.fillStyle = this.color;
+      ctx.fill();
+    }
+  }
+
+  function initParticles() {
+    const count = Math.floor((canvas.width * canvas.height) / 12000);
+    particles = Array.from({ length: Math.min(count, 120) }, () => new Particle());
+  }
+  initParticles();
+
+  function drawConnections() {
+    for (let i = 0; i < particles.length; i++) {
+      for (let j = i + 1; j < particles.length; j++) {
+        const dx   = particles[i].x - particles[j].x;
+        const dy   = particles[i].y - particles[j].y;
+        const dist = Math.sqrt(dx*dx + dy*dy);
+        if (dist < 120) {
+          ctx.beginPath();
+          ctx.moveTo(particles[i].x, particles[i].y);
+          ctx.lineTo(particles[j].x, particles[j].y);
+          ctx.strokeStyle = `rgba(0,212,255,${(1 - dist/120) * 0.08})`;
+          ctx.lineWidth = 0.5;
+          ctx.stroke();
+        }
+      }
+    }
+  }
+
+  function animate() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    particles.forEach(p => { p.update(); p.draw(); });
+    drawConnections();
+    requestAnimationFrame(animate);
+  }
+  animate();
+
+  /* ===== TYPING EFFECT ===== */
+  const phrases = [
+    'Seus Dados Valem Dinheiro',
+    'Cada Clique Conta',
+    'Você Está Sendo Rastreado',
+    'Privacidade É Um Direito'
+  ];
+  let phraseIdx = 0, charIdx = 0, deleting = false;
+  const typingEl = document.getElementById('typingText');
+
+  function type() {
+    const current = phrases[phraseIdx];
+    if (!deleting) {
+      typingEl.textContent = current.substring(0, charIdx + 1);
+      charIdx++;
+      if (charIdx === current.length) {
+        deleting = true;
+        setTimeout(type, 2000);
+        return;
+      }
+    } else {
+      typingEl.textContent = current.substring(0, charIdx - 1);
+      charIdx--;
+      if (charIdx === 0) {
+        deleting = false;
+        phraseIdx = (phraseIdx + 1) % phrases.length;
+      }
+    }
+    setTimeout(type, deleting ? 50 : 90);
+  }
+  type();
+
+  /* ===== NAVBAR SCROLL ===== */
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 50);
+  });
+
+  /* ===== HAMBURGER MENU ===== */
+  const hamburger = document.getElementById('hamburger');
+  const navLinks  = document.getElementById('navLinks');
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('active');
+    navLinks.classList.toggle('open');
+  });
+  navLinks.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      hamburger.classList.remove('active');
+      navLinks.classList.remove('open');
+    });
+  });
+
+  /* ===== BACK TO TOP ===== */
+  const backToTop = document.getElementById('backToTop');
+  window.addEventListener('scroll', () => {
+    backToTop.classList.toggle('visible', window.scrollY > 500);
+  });
+  backToTop.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  /* ===== ANIMATED COUNTERS ===== */
+  function animateCounter(el) {
+    const target = parseInt(el.dataset.target);
+    const duration = 2000;
+    const step = target / (duration / 16);
+    let current = 0;
+    const timer = setInterval(() => {
+      current += step;
+      if (current >= target) {
+        current = target;
+        clearInterval(timer);
+      }
+      el.textContent = Math.floor(current).toLocaleString('pt-BR');
+    }, 16);
+  }
+
+  const counterObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        animateCounter(entry.target);
+        counterObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.5 });
+
+  document.querySelectorAll('.stat-num[data-target]').forEach(el => {
+    counterObserver.observe(el);
+  });
+
+  /* ===== PROTECTION BAR ANIMATION ===== */
+  const barObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const fills = entry.target.querySelectorAll('.prot-fill');
+        fills.forEach(fill => {
+          const target = getComputedStyle(fill).getPropertyValue('--fill').trim();
+          setTimeout(() => { fill.style.width = target; }, 300);
+        });
+        barObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.2 });
+
+  document.querySelectorAll('.protection-grid').forEach(el => barObserver.observe(el));
+
+  /* ===== CASE TABS ===== */
+  const caseTabs = document.querySelectorAll('.case-tab');
+  caseTabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      caseTabs.forEach(t => t.classList.remove('active'));
+      document.querySelectorAll('.case-content').forEach(c => c.classList.remove('active'));
+      tab.classList.add('active');
+      const target = document.getElementById('case-' + tab.dataset.case);
+      if (target) {
+        target.classList.add('active');
+        // Fade-in
+        target.style.opacity = '0';
+        target.style.transform = 'translateY(12px)';
+        requestAnimationFrame(() => {
+          target.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
+          target.style.opacity = '1';
+          target.style.transform = 'translateY(0)';
+        });
+      }
+    });
+  });
+
+  /* ===== SMOOTH SECTION HIGHLIGHT ON SCROLL ===== */
+  const sections = document.querySelectorAll('section[id]');
+  const navAnchors = document.querySelectorAll('.nav-links a');
+
+  const sectionObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        navAnchors.forEach(a => {
+          a.classList.remove('active-nav');
+          if (a.getAttribute('href') === '#' + entry.target.id) {
+            a.classList.add('active-nav');
+          }
+        });
+      }
+    });
+  }, { threshold: 0.3 });
+
+  sections.forEach(sec => sectionObserver.observe(sec));
+
+  /* ===== GLITCH EFFECT ON HERO TITLE ===== */
+  const titleLines = document.querySelectorAll('.hero-title .title-line');
+  setInterval(() => {
+    if (Math.random() > 0.85) {
+      const line = titleLines[Math.floor(Math.random() * titleLines.length)];
+      line.classList.add('glitch');
+      setTimeout(() => line.classList.remove('glitch'), 150);
+    }
+  }, 3000);
+
+});
+
+/* ===== ACTIVE NAV STYLE (CSS class) ===== */
+const style = document.createElement('style');
+style.textContent = `
+  .nav-links a.active-nav {
+    color: var(--accent-cyan) !important;
+    background: rgba(0,212,255,0.08) !important;
+  }
+  .glitch {
+    animation: glitchAnim 0.15s linear !important;
+  }
+  @keyframes glitchAnim {
+    0%   { transform: translateX(0); filter: none; }
+    20%  { transform: translateX(-3px); filter: hue-rotate(90deg); }
+    40%  { transform: translateX(3px); filter: saturate(200%); }
+    60%  { transform: translateX(-2px); filter: hue-rotate(-90deg); }
+    80%  { transform: translateX(2px); filter: none; }
+    100% { transform: translateX(0); filter: none; }
+  }
+`;
+document.head.appendChild(style);
+  </script>
+</body>
+</html>
